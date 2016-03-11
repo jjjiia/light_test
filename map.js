@@ -47,7 +47,7 @@ function drawDots(data,svg){
     svg.selectAll(".dots")
         .data(data)
         .enter()
-        .append("circle").transition().delay(function(d,i){return i})
+        .append("circle").transition().delay(function(d,i){return i/10})
         .attr("class","dots")
         .attr("r",4)
         .attr("cx",function(d){
