@@ -1,6 +1,6 @@
 $(function() {
 	queue()
-		.defer(d3.json, "neighborhoods.geojson")
+		.defer(d3.json, "counties.geojson")
         .defer(d3.json, "categories.json")
         .defer(d3.json, "time.json")
     
@@ -39,7 +39,7 @@ function drawBuildings(geoData,svg){
 		.attr("class","street")
 		.attr("d",path)
 		.style("stroke","#fff")
-	    .style("opacity",.2)
+	    .style("opacity",.3)
 }
 
 function drawDots(data,svg){
