@@ -10,6 +10,7 @@
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="static/javascripts/jquery-ui.min.js"></script>
 <link href="static/bootstrap-3.1.1-dist/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
     <script src="nv.d3.js"></script>
@@ -17,8 +18,8 @@
     <style>
 body{
 font-family:Helvetica;
-color:#fffff2;
-background-color:#000;
+color:#000;
+background-color:#fff;
 }
 #highlightText{font-size:12px;padding:20px;position:absolute;left:600px;top:600px;}
 #title { padding:20px;            
@@ -27,21 +28,25 @@ background-color:#000;
 text {
   font-family:Helvetica;
     font: 12px sans-serif;
+    color:#000;
+    
 }
+#play{position:absolute;left:600px;top:50px;z-index:9999;}
 svg .mapSvg{
     position:fixed; top:0; left:0; height:100%; width:100%
 }
 
 #map{position:absolute;left:0px;top:0px;}
-#chart1{position:absolute;left:600px;top:50px;}
+#chart1{position:absolute;left:620px;top:50px;}
     </style>
 </head>
 <body>
  
        <div id="title"> Chicago on Wednesday</div>
         <div id="highlightText">highlight</div>
+<div id="play"><i class="fa fa-play"></i></div>
         <div id="map"></div>
-<div id="chart1"></div>
+<div id="chart1">% of Businesses in Category Open:<br/></div>
 <script src="map.js"></script>
 
 
