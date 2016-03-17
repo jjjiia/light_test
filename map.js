@@ -29,13 +29,32 @@ var svg = d3.select("#chart1").append("svg").attr("height",height+10).attr("widt
 var rScale = d3.scale.linear().domain([1,100]).range([3,spaceW/2-1])
 var bgScale = d3.scale.linear().domain([0,10,17,23]).range(["#000","#FFFFF2","#FFFFF0","#000"]) 
 
+var colorDictionary = {
+    "beauty":"#2fa8c6",
+    "health":"#6ac5dc",
+    "recreation":"#acdfec",
+    "culture":"#891a1a",
+    "education":"#ce2727",
+    "public":"#e26565",
+    "religious":"#efa959",
+    "office":"#4d673c",
+    "finance":"#749a5b",
+    "service":"#9ebb8b",
+    "retail":"#c9d9bf",
+    "other":"#939598",
+    "food":"#e7520d",
+    "restaurant_and_cafe":"#f58551",
+    "entertainment":"#cdd61f",
+    "nightclub":"#e1e85e"
+}
+
 function dataDidLoad(error,streets,categories,times,time_category){
 //make 1 svg for everything
     var w = window
     x = w.innerWidth || e.clientWidth || g.clientWidth;
     y = w.innerHeight|| e.clientHeight|| g.clientHeight;
     
-   var categoryColors = colorDictionary(categories,blues)
+ //  var categoryColors = colorDictionary(categories,blues)
     var mapSvg = d3.select("#map").append("svg").attr("width", x).attr("height", y).attr("class","mapSvg")
     //draw each layer
     drawBuildings(streets,mapSvg)
@@ -106,10 +125,9 @@ function drawDots(data,svg,category){
             return projectedLat
         })
         .attr("fill",function(d){
-            return categoryColors[d.cat.toLowerCase()]
-           return blues[Math.round(Math.random()*15)]
+            return colorDictionary[d.cat.toLowerCase()]
         })
-        .attr("opacity",1)
+        .attr("opacity",.7)
         //.attr("stroke","#fff")
         //.attr("stroke-width",2)
         
@@ -146,7 +164,7 @@ function drawChart(data,divName){
         .attr("cy",function(d,i){return row+20+margin_top})
         .attr("cx",function(d,i){return i*spaceW+150})
         .attr("r",function(d){return rScale(d[1])})
-        .attr("fill",categoryColors[key.toLowerCase()])
+        .attr("fill",colorDictionary [key.toLowerCase()])
         .attr("class",function(d,i){return key.toLowerCase()})        
         .on("mouseover",function(d){
             var type = d3.select(this).attr("class")
